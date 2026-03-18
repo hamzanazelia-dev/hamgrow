@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>الوحش حمزة - التميز</title>
+    
+    <!-- المكتبات الخارجية: Tailwind CSS وخط Cairo من Google Fonts -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --brand-orange: #ff9d2e;
+            --brand-deep: #e67e22;
+        }
+
+        body {
+            font-family: 'Cairo', sans-serif;
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #ffffff; /* خلفية فاتحة ونقية */
+            overflow: hidden;
+            position: relative;
+        }
+
+        /* خلفية تفاعلية ناعمة تتبع حركة الماوس */
+        .bg-gradient {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            /* المتغيرات --x و --y يتم تحديثها بواسطة JavaScript */
+            background: radial-gradient(circle at var(--x, 50%) var(--y, 50%), rgba(255, 157, 46, 0.12) 0%, transparent 60%);
+            z-index: -1;
+        }
+
+        /* دوائر هلامية (Blobs) متحركة لإعطاء لمسة عصرية */
+        .blob {
+            position: absolute;
+            width: 600px;
+            height: 600px;
+            background: linear-gradient(135deg, rgba(255, 157, 46, 0.2), rgba(255, 107, 107, 0.1));
+            filter: blur(100px);
+            border-radius: 50%;
+            z-index: -2;
+            animation: blob-float 25s infinite alternate;
+        }
+
+        @keyframes blob-float {
+            0% { transform: translate(-15%, -15%) scale(1); }
+            100% { transform: translate(15%, 15%) scale(1.1); }
+        }
+
+        /* تصميم الزر العالمي الفاخر */
+        .btn-ultimate {
+            position: relative;
+            background: var(--brand-orange);
+            color: white;
+            font-weight: 900;
+            font-size: 2.8rem;
+            padding: 1.5rem 5rem;
+            border-radius: 100px;
+            text-decoration: none;
+            z-index: 20;
+            box-shadow: 0 15px 45px -10px rgba(255, 157, 46, 0.4);
+            transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+            display: flex;
+            align-items: center;
+            gap: 25px;
+            border: 2px solid rgba(255, 255, 255, 0.4);
+            backdrop-filter: blur(10px);
+            overflow: hidden;
+        }
+
+        /* تأثير التوهج الدوار عند تمرير الماوس (Hover) */
+        .btn-ultimate::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: conic-gradient(from 0deg, transparent, rgba(255,255,255,0.4), transparent 30%);
+            animation: rotate 4s linear infinite;
+            z-index: -1;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .btn-ultimate:hover {
+            transform: scale(1.08) translateY(-10px);
+            background: var(--brand-deep);
+            box-shadow: 0 25px 55px -12px rgba(255, 157, 46, 0.5);
+        }
+
+        .btn-ultimate:hover::after { opacity: 1; }
+
+        .btn-ultimate:active { transform: scale(0.95); }
+
+        /* الأيقونات العائمة التي تعبر عن القوة والإنتاجية */
+        .floating-art {
+            position: absolute;
+            font-size: 3.5rem;
+            opacity: 0.15;
+            filter: drop-shadow(0 5px 15px rgba(255, 157, 46, 0.1));
+            user-select: none;
+            pointer-events: none;
+            animation: float-art 8s infinite ease-in-out;
+            z-index: 5;
+        }
+
+        @keyframes float-art {
+            0%, 100% { transform: translateY(0) rotate(0deg) scale(1); }
+            50% { transform: translateY(-30px) rotate(15deg) scale(1.1); }
+        }
+
+        /* توزيع الأيقونات في أنحاء الصفحة */
+        .p-1 { top: 15%; right: 10%; animation-delay: 0s; }
+        .p-2 { top: 20%; left: 15%; animation-delay: 1s; }
+        .p-3 { bottom: 20%; right: 15%; animation-delay: 2s; }
+        .p-4 { bottom: 15%; left: 10%; animation-delay: 3s; }
+        .p-5 { top: 10%; left: 50%; animation-delay: 4s; }
+        .p-6 { bottom: 10%; right: 45%; animation-delay: 5s; }
+
+        /* حركة السهم داخل الزر */
+        .arrow { transition: transform 0.4s ease; }
+        .btn-ultimate:hover .arrow { transform: translateX(-15px); }
+    </style>
+</head>
+<body>
+
+    <!-- طبقات الخلفية -->
+    <div class="bg-gradient" id="gradient"></div>
+    <div class="blob"></div>
+
+    <!-- رموز القوة والمثابرة والرياضة والإنتاجية -->
+    <div class="floating-art p-1">🔥</div>
+    <div class="floating-art p-2">⚡</div>
+    <div class="floating-art p-3">💪</div>
+    <div class="floating-art p-4">🎯</div>
+    <div class="floating-art p-5">🏋️</div>
+    <div class="floating-art p-6">⚙️</div>
+
+    <!-- الزر الرئيسي الموجه لرابط التوثيق -->
+    <a href="https://hamzaaa.lovable.app/auth" target="_blank" rel="noopener noreferrer" class="btn-ultimate">
+        <span>إبدأ</span>
+        <div class="arrow">
+            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                <path d="m9 18 6-6-6-6"/>
+            </svg>
+        </div>
+    </a>
+
+    <script>
+        // تحديث إحداثيات الخلفية التفاعلية بناءً على حركة الماوس
+        document.addEventListener('mousemove', (e) => {
+            const x = (e.clientX / window.innerWidth) * 100;
+            const y = (e.clientY / window.innerHeight) * 100;
+            const gradient = document.getElementById('gradient');
+            if(gradient) {
+                gradient.style.setProperty('--x', `${x}%`);
+                gradient.style.setProperty('--y', `${y}%`);
+            }
+        });
+    </script>
+</body>
+</html>
